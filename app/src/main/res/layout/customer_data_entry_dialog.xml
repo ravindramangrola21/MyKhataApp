@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_gravity="center"
+    android:padding="20dp"
+    android:background="@color/pink">
+    <EditText
+        android:id="@+id/vegName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Item Name"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black">
+    </EditText>
+    <EditText
+        android:id="@+id/vegWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Item Weight"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:inputType="numberDecimal">
+    </EditText>
+    <EditText
+        android:id="@+id/vegRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Item Rate"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:inputType="numberDecimal">
+    </EditText>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+        <Button
+            android:id="@+id/cancelDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:layout_marginRight="40dp">
+        </Button>
+        <Button
+            android:id="@+id/addNewEntry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADD">
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>

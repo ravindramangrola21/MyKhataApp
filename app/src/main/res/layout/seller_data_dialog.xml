@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="20dp"
+    android:padding="30dp"
+    android:background="@color/pink">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seller : "
+            android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/dialogSellerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Seller Name"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"></TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item :   "
+            android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/dialogItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Item Name"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weight : "
+            android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/dialogItemWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Item Weight"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"></TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rate : "
+            android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/dialogItemRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Item Rate"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"></TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount : "
+            android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/dialogItemAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Item Price"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"></TextView>
+    </LinearLayout>
+    <Button
+        android:id="@+id/dialogOkBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp">
+    </Button>
+
+</LinearLayout>
