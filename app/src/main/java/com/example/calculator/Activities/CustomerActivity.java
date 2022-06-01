@@ -49,9 +49,10 @@ public class CustomerActivity extends AppCompatActivity {
         db = new DatabaseHelper(CustomerActivity.this);
 
         recyclerView = findViewById(R.id.customerRecyclerView);
+        addCustomer = findViewById(R.id.addNewC);
+
         nameList = new ArrayList();
         sNoList = new ArrayList();
-        addCustomer = findViewById(R.id.addNewC);
 
         adapter = new CustomerNameAdapter(CustomerActivity.this, nameList, sNoList, Date);
         recyclerView.setAdapter(adapter);
@@ -86,8 +87,14 @@ public class CustomerActivity extends AppCompatActivity {
                             if (result)
                                 Toast.makeText(CustomerActivity.this, "New Customer Added", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
-                            finish();
-                            startActivity(getIntent());
+
+                            sNoList.clear();
+                            nameList.clear();
+                            getData(db);
+                            adapter = new CustomerNameAdapter(CustomerActivity.this, nameList, sNoList, Date);
+                            recyclerView.setAdapter(adapter);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(CustomerActivity.this));
+
                         }
                     }
                 });

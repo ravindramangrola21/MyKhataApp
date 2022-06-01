@@ -1,7 +1,5 @@
 package com.example.calculator.Activities;
 
-import static java.security.AccessController.getContext;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,10 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.CursorWrapper;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -21,17 +17,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.example.calculator.Adapters.CustomerEntriesAdapter;
-import com.example.calculator.Adapters.CustomerNameAdapter;
 import com.example.calculator.Adapters.CustomerSingleEntryAdapter;
 import com.example.calculator.ChildItem;
 import com.example.calculator.DatabaseHelper;
 import com.example.calculator.ParentItem;
 import com.example.calculator.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.ArrayList;
 
@@ -44,15 +37,12 @@ public class CustomerAccountActivity extends AppCompatActivity {
     String pickName,pickDate;
     private int C_ID;
     ArrayList<ParentItem> parentItems = new ArrayList<>();
-    ArrayList<ChildItem> childItems = new ArrayList<>();
     ArrayList<Integer> dateIDList = new ArrayList();
-    ArrayList<Integer> cIDList = new ArrayList();
     RecyclerView recyclerView;
     private SwitchCompat filterTogle;
     private SwipeRefreshLayout refreshLayout;
-
     private CustomerEntriesAdapter adapter;
-    private CustomerSingleEntryAdapter adaptr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,16 +55,6 @@ public class CustomerAccountActivity extends AppCompatActivity {
         filterTogle = findViewById(R.id.togleFilter);
         refreshLayout = findViewById(R.id.refreshLayout);
 
-
-
-
-        adapter = new CustomerEntriesAdapter(this, parentItems, dateIDList, cIDList);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(CustomerAccountActivity.this));
-
-
-
-
         Bundle bundle= getIntent().getExtras();
         if(bundle!=null) {
             pickName = bundle.getString("name");
@@ -83,6 +63,10 @@ public class CustomerAccountActivity extends AppCompatActivity {
             Log.d("SellerDataActivity", "onCreate: " + pickName);
             txtview.setText(pickName);
         }
+        adapter = new CustomerEntriesAdapter(this, parentItems, dateIDList, C_ID);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(CustomerAccountActivity.this));
+
         filterTogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,9 +74,13 @@ public class CustomerAccountActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("switch", filterTogle.isChecked());
                 editor.apply();
-                finish();
-                startActivity(getIntent());
 
+                parentItems.clear();
+                dateIDList.clear();
+                getData(db);
+                adapter = new CustomerEntriesAdapter(CustomerAccountActivity.this, parentItems, dateIDList, C_ID);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(CustomerAccountActivity.this));
             }
         });
 
@@ -107,7 +95,7 @@ public class CustomerAccountActivity extends AppCompatActivity {
                 vegWeight = Dl.findViewById(R.id.vegWeight);
                 vegRate = Dl.findViewById(R.id.vegRate);
                 cancelDialog = Dl.findViewById(R.id.cancelDialog);
-                addEntry = Dl.findViewById(R.id.addNewEntry);
+                addEntry = Dl.findViewById(R.id.addSellerNewEntry);
 
                 addEntry.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -128,6 +116,12 @@ public class CustomerAccountActivity extends AppCompatActivity {
                                 vegName.setText("");
                                 vegWeight.setText("");
                                 vegRate.setText("");
+                                parentItems.clear();
+                                dateIDList.clear();
+                                getData(db);
+                                adapter = new CustomerEntriesAdapter(CustomerAccountActivity.this, parentItems, dateIDList, C_ID);
+                                recyclerView.setAdapter(adapter);
+                                recyclerView.setLayoutManager(new LinearLayoutManager(CustomerAccountActivity.this));
                                 Toast.makeText(CustomerAccountActivity.this, "New Entry added", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -137,8 +131,6 @@ public class CustomerAccountActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Dl.dismiss();
-                        finish();
-                        startActivity(getIntent());
                     }
                 });
 
@@ -168,14 +160,12 @@ public class CustomerAccountActivity extends AppCompatActivity {
            ParentItem parentItem = new ParentItem(cursorDate.getString(1));
            parentItems.add(parentItem);
            dateIDList.add(cursorDate.getInt(0));
-           cIDList.add(C_ID);
-
            Cursor cursorEntry = db.getDataFromCustomerEntriesTable(cursorDate.getInt(0), C_ID);
 
            if(cursorEntry.getCount()==0) {
                dateIDList.remove(dateIDList.size()-1);
-               cIDList.remove(cIDList.size()-1);
                parentItems.remove(parentItems.size() - 1);
+               db.deleteDataFromTable5(cursorDate.getInt(0), C_ID);
            }
         }
         if(parentItems.size()==0)

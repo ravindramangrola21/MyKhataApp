@@ -9,10 +9,13 @@
         android:id="@+id/customerName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Customer name"
+        android:hint="Enter Customer name"
         android:layout_margin="20dp"
         android:textColor="@color/black"
-        android:textStyle="bold">
+        android:textStyle="bold"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:singleLine="true">
     </EditText>
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +31,7 @@
             android:id="@+id/saveCustomer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SAVE"
+            android:text="ADD"
             android:layout_margin="20dp"></Button>
 
     </LinearLayout>

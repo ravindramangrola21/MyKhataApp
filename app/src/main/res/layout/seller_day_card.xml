@@ -10,24 +10,85 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/peach">
-        <TextView
-            android:id="@+id/sellerEntryDate"
+        android:background="@color/pink"
+        android:id="@+id/sellerDayLayout">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="dd/mm/yyyy"
-            android:background="@color/peach"
-            android:textStyle="italic"
-            android:textSize="20dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/black">
-        </TextView>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/peach">
+            <TextView
+                android:id="@+id/sellerEntryDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dd/mm/yyyy"
+                android:background="@color/peach"
+                android:textStyle="italic"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:layout_weight=".9">
+            </TextView>
+
+            <Button
+                android:id="@+id/sellerDepositBtn"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
+                android:text="Deposit"></Button>
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/sellerDayEntry"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/pink">
+            android:layout_height="wrap_content">
         </androidx.recyclerview.widget.RecyclerView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amt="
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:layout_weight=".05"
+                android:layout_marginLeft="5dp">
+            </TextView>
+            <TextView
+                android:id="@+id/dayNetAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="1000"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:layout_weight=".6">
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Due="
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:layout_weight=".05"
+                android:textStyle="bold">
+            </TextView>
+            <TextView
+                android:id="@+id/dayDueAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="1000"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_weight=".2"
+                android:textStyle="bold">
+            </TextView>
+
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

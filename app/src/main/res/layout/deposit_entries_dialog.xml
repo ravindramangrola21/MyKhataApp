@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/pink"
+    android:layout_gravity="center"
+    android:gravity="center">
+    <ImageView
+        android:id="@+id/cancelImageBtn"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/cancelbtn"
+        android:layout_gravity="right"></ImageView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Due Amount : "
+            android:textSize="20dp"
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:id="@+id/netAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="1000"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"></TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deposit Amount : "
+            android:textSize="20dp"
+            android:textColor="@color/black"></TextView>
+        <EditText
+            android:id="@+id/crntDeposit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="deposit"
+            android:textSize="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:inputType="numberSigned">
+        </EditText>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/deposited"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deposit"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"></Button>
+</LinearLayout>

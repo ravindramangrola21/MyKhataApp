@@ -25,14 +25,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_margin="10dp">
+
                 <TextView
                     android:id="@+id/sNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"
                     android:layout_marginRight="20dp"
-                    android:text="3"></TextView>
+                    android:hint="1"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
                 <TextView
                     android:id="@+id/cListName"
                     android:padding="5dp"
@@ -40,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:text="Ravindra Mangrola"
+                    android:hint="Name"
                     android:textSize="20dp">
 
                 </TextView>

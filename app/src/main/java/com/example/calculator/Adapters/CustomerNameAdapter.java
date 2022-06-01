@@ -124,10 +124,14 @@ public class CustomerNameAdapter extends RecyclerView.Adapter<CustomerNameAdapte
                         @Override
                         public void onClick(View view) {
                             boolean isUpdated = db.UpdateNameInTable2(Integer.parseInt((String) sNolist.getText()), name.getText().toString().toUpperCase());
-                            if(isUpdated)
+                            if(isUpdated) {
                                 Toast.makeText(imageView.getContext(), "Name Updated", Toast.LENGTH_SHORT).show();
+                                nameList.remove(position);
+                                nameList.add(position, name.getText().toString().toUpperCase());
+                                notifyItemChanged(position);
+                            }
                             newdialog.dismiss();
-                            notifyDataSetChanged();
+
                         }
                     });
                     CancelDialog.setOnClickListener(new View.OnClickListener() {

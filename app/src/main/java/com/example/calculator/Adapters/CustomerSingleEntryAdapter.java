@@ -3,9 +3,6 @@ package com.example.calculator.Adapters;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,22 +14,24 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.calculator.Activities.CustomerAccountActivity;
-import com.example.calculator.Activities.MainActivity;
 import com.example.calculator.ChildItem;
 import com.example.calculator.DatabaseHelper;
+import com.example.calculator.Listenteners.OnCustomerChildChanged;
 import com.example.calculator.R;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class CustomerSingleEntryAdapter extends RecyclerView.Adapter<CustomerSingleEntryAdapter.CustomerSingleEntryViewHolder> {
     ArrayList<ChildItem> childItemArrayList;
     Activity activity;
+    OnCustomerChildChanged onChildChanged;
+    private double dueAmount=0.0;
 
-    public CustomerSingleEntryAdapter(ArrayList<ChildItem> childItemArrayLists, Activity activity) {
+    public CustomerSingleEntryAdapter(ArrayList<ChildItem> childItemArrayLists, Activity activity, double dueAmount, OnCustomerChildChanged onChildChanged) {
         this.childItemArrayList = childItemArrayLists;
         this.activity = activity;
+        this.dueAmount = dueAmount;
+        this.onChildChanged = onChildChanged;
     }
 
     @Override
@@ -98,11 +97,12 @@ public class CustomerSingleEntryAdapter extends RecyclerView.Adapter<CustomerSin
                 public void onClick(View view) {
                     DatabaseHelper db= new DatabaseHelper(activity.getApplicationContext());
                     ChildItem childItem = childItemArrayList.get(position);
-                    boolean isDeleted= db.deleteItemFromTable3(childItem.entryId);
+                    boolean isDeleted= db.deleteItemFromTable3(childItem.entryId, childItem.vegAmount, childItem.cId, childItem.dateId);
                     if(isDeleted) {
                         Toast.makeText(activity.getApplicationContext(), "Item Entry Deleted", Toast.LENGTH_SHORT).show();
                         childItemArrayList.remove(position);
                         notifyItemRemoved(position);
+                        onChildChanged.changed();
                     }
                     dialog.dismiss();
                 }

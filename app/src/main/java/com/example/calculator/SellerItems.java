@@ -1,16 +1,20 @@
 package com.example.calculator;
 
 public class SellerItems {
-    public int id;
-    public String sellerName, itemName, itemWeight, itemRate;
-    public Double totalAmount;
+    public int id, nangCount,sellerID, dateID;
+    public String itemName, itemWeight, itemRate;
+    public Double mTax, wChungi, totalAmount;
 
-    public SellerItems(int id, String sellerNAme, String itemName, String itemWeight, String itemRate, Double totalAmount) {
+    public SellerItems(int id, int sellerID, int  dateID, String itemName, String itemWeight, String itemRate, int nangCount, Double wChungi, Double mTax, Double totalAmount) {
         this.id = id;
-        this.sellerName = sellerNAme;
+        this.sellerID = sellerID;
+        this.dateID = dateID;
         this.itemName = itemName;
         this.itemWeight = itemWeight;
         this.itemRate = itemRate;
+        this.nangCount = nangCount;
+        this.wChungi = wChungi;
+        this.mTax = mTax;
         this.totalAmount = totalAmount;
     }
 }

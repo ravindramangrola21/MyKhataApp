@@ -7,26 +7,7 @@
     android:layout_margin="20dp"
     android:padding="30dp"
     android:background="@color/pink">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="5dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Seller : "
-            android:textSize="15dp"/>
-        <TextView
-            android:id="@+id/dialogSellerName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Seller Name"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"></TextView>
 
-    </LinearLayout>
     <LinearLayout
         android:layout_margin="5dp"
         android:layout_width="wrap_content"
@@ -94,6 +75,63 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Nang : "
+            android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/dialogItemCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Nang Count"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chungi : "
+            android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/dialogItemChungi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Chungi"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tax : "
+            android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/dialogItemTax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Mandi Tax"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Amount : "
             android:textSize="15dp"/>
         <TextView
@@ -111,7 +149,7 @@
         android:layout_height="wrap_content"
         android:text="OK"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="20dp">
     </Button>
 
 </LinearLayout>
